@@ -11,7 +11,7 @@ TOKEN = "jingyuanz"
 
 @csrf_exempt
 def wechat(request):
-    wechat = wechat_sdk.WechatBasic(token=TOKEN)
+    wechat = WechatBasic(token=TOKEN)
     if wechat.check_signature(signature=request.GET['signature'],
                               timestamp=request.GET['timestamp'],
                               nonce=request.GET['nonce']):
