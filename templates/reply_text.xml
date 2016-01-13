@@ -1,7 +1,7 @@
 <xml>
-<ToUserName>{{ toUser }}</ToUserName>
-<FromUserName>{{ fromUser }}</FromUserName>
-<CreateTime>{{ createTime }}</CreateTime>
-<MsgType>Text</MsgType>
-<Content>123</Content>
+<ToUserName><![CDATA[{{ toUser }}]]></ToUserName>
+<FromUserName><![CDATA[{{ fromUser }}]]></FromUserName>
+<CreateTime>1234</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[你好]]></Content>
 </xml>

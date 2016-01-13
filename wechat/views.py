@@ -45,8 +45,7 @@ def parse_message(request_xml):
     toUser=request_xml.find("ToUserName").text
     c = {
         'toUser' : fromUser,
-        'fromUser' : toUser,
-        'createTime': 1234,
+        'fromUser' : toUser
     }
     result = t.render(Context(c))
     return result
