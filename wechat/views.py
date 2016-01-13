@@ -49,4 +49,4 @@ def parse_message(request_xml):
         'fromUser' : toUser,
         'createTime': 1234
     }
-    return HttpResponse(t.render(c))
+    return HttpResponse(t.render(Context(c)))
