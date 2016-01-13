@@ -6,12 +6,12 @@ from django.views.decorators.csrf import csrf_exempt
 import time
 import hashlib
 import wechat_sdk
-from wechat_sdk import WechatBasic
+# from wechat_sdk import WechatBasic
 TOKEN = "jingyuanz"
 
 @csrf_exempt
 def wechat(request):
-    wechat = WechatBasic(token=TOKEN)
+    wechat = wechat_sdk.WechatBasic(token=TOKEN)
     if wechat.check_signature(signature=request.GET['signature'],
                               timestamp=request.GET['timestamp'],
                               nonce=request.GET['nonce']):
