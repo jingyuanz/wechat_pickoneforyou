@@ -29,4 +29,4 @@ def checkSignature(request):
     if tmpstr == signature:
         return echoStr
     else:
-        return "Hello World Testing"
+        return echoStr
