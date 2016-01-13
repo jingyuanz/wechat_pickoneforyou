@@ -34,4 +34,4 @@ def wechat(request):
         xml_str = smart_str(request.body)
         request_xml = etree.fromstring(xml_str)
         response_xml = request_xml
-        return HttpResponse(response_xml)
+        return HttpResponse(request_xml)
