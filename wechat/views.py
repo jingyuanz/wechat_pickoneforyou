@@ -1,32 +1,25 @@
+#coding=utf-8
 __author__ = 'zhangjingyuan'
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.views.decorators.csrf import csrf_exempt
 import time
 import hashlib
+from wechat_sdk import WechatBasic
 TOKEN = "jingyuanz"
 
 @csrf_exempt
 def wechat(request):
-    if request.method == 'POST':
-        response = HttpResponse(checkSignature(request),content_type="text/plain")
-        return response
-
+    wechat = WechatBasic(token=TOKEN)
+    if wechat.check_signature(signature=request.GET['signature'],
+                              timestamp=request.GET['timestamp'],
+                              nonce=request.GET['nonce']):
+        if request.method == 'GET':
+            rsp = request.GET.get('echostr', 'error')
+        else:
+            wechat.parse_data(request.body)
+            message = wechat.get_message()
+            rsp = wechat.response_text(u'消息类型: {}'.format(message.type))
     else:
-        return "hello"
-
-def checkSignature(request):
-    global TOKEN
-    signature = request.POST.get("signature", None)
-    timestamp = request.POST.get("timestamp", None)
-    nonce = request.POST.get("nonce", None)
-    echoStr = request.POST.get("echostr",None)
-    token = TOKEN
-    tmpList = [token,timestamp,nonce]
-    tmpList.sort()
-    tmpstr = "%s%s%s" % tuple(tmpList)
-    tmpstr = hashlib.sha1(tmpstr).hexdigest()
-    if tmpstr == signature:
-        return echoStr
-    else:
-        return echoStr
+        rsp = wechat.response_text('check error')
+    return HttpResponse(rsp)
