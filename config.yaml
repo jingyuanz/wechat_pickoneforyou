@@ -8,8 +8,6 @@ libraries:
 - name: "lxml"
   version: "3.5.0"
 
-- name: "wechat_sdk"
-  version: "0.6.1"
 
 handlers:
 - url: /static

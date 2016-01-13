@@ -10,7 +10,7 @@ from django.http import HttpResponse
 TOKEN = 'jingyuanz'
 
 @csrf_exempt
-def weixin_main(request):
+def wechat(request):
     """
     所有的消息都会先进入这个函数进行处理，函数包含两个功能，
     微信接入验证是GET方法，
