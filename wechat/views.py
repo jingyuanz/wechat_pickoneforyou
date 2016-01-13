@@ -13,7 +13,7 @@ def wechat(request):
         return response
 
     else:
-        return None
+        return "hello"
 
 def checkSignature(request):
     global TOKEN
