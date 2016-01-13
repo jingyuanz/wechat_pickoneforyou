@@ -6,7 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 import time
 import hashlib
 import wechat_sdk
-from wechat_sdk import WechatBasic
+from wechat_sdk.basic import WechatBasic
 TOKEN = "jingyuanz"
 
 @csrf_exempt
