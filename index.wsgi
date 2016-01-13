@@ -1,6 +1,5 @@
-#coding:utf-8  
-import sae  
+import sae
   
-from wechat import wsgi                         #将pythondjangotest换成你的应用名  
+from wechat import wsgi
   
 application = sae.create_wsgi_app(wsgi.application)  
