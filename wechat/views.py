@@ -7,6 +7,7 @@ from django.utils.encoding import smart_str
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.template import Context,Template,loader
+import time
 TOKEN = 'jingyuanz'
 
 @csrf_exempt
@@ -34,7 +35,7 @@ def wechat(request):
         xml_str = smart_str(request.body)
         request_xml = etree.fromstring(xml_str)
         response_xml = parse_message(request_xml)
-        return HttpResponse(response_xml)
+        return HttpResponse(response_xml, content_type="application/xml")
 
 
 def parse_message(request_xml):
@@ -45,7 +46,8 @@ def parse_message(request_xml):
     toUser=request_xml.find("ToUserName").text
     c = {
         'toUser' : fromUser,
-        'fromUser' : toUser
+        'fromUser' : toUser,
+        'createTime': str(int(time.time()))
     }
     result = t.render(Context(c))
     return result
