@@ -1,3 +1,5 @@
+#coding=utf-8
+
 import os
 import sys
 root = os.path.dirname(__file__)                                             #输出当前文件所在文件夹的绝对路径
