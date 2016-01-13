@@ -39,7 +39,6 @@ def wechat(request):
 
 def parse_message(request_xml):
     t = loader.get_template('reply_text.xml')
-
     content=request_xml.find("Content").text#获得用户所输入的内容
     msgType=request_xml.find("MsgType").text
     fromUser=request_xml.find("FromUserName").text
