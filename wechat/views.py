@@ -8,7 +8,7 @@ TOKEN = "jingyuanz"
 
 @csrf_exempt
 def wechat(request):
-    if request.method == 'GET':
+    if request.method == 'POST':
         response = HttpResponse(checkSignature(request),content_type="text/plain")
         return response
 
@@ -17,10 +17,10 @@ def wechat(request):
 
 def checkSignature(request):
     global TOKEN
-    signature = request.GET.get("signature", None)
-    timestamp = request.GET.get("timestamp", None)
-    nonce = request.GET.get("nonce", None)
-    echoStr = request.GET.get("echostr",None)
+    signature = request.POST.get("signature", None)
+    timestamp = request.POST.get("timestamp", None)
+    nonce = request.POST.get("nonce", None)
+    echoStr = request.POST.get("echostr",None)
     token = TOKEN
     tmpList = [token,timestamp,nonce]
     tmpList.sort()
