@@ -5,6 +5,9 @@ libraries:
 - name: "django" 
   version: "1.8.3"
 
+- name: "lxml"
+  version: "3.5.0"
+
 - name: "wechat_sdk"
   version: "0.6.1"
 
