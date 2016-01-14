@@ -2,6 +2,7 @@
 __author__ = 'zhangjingyuan'
 import hashlib
 import json
+import logging
 from lxml import etree
 from django.utils.encoding import smart_str
 from django.views.decorators.csrf import csrf_exempt
@@ -47,7 +48,7 @@ def parse_message(request_xml):
                 <CreateTime>%s</CreateTime>
                 <MsgType><![CDATA[%s]]></MsgType>
                 <Content><![CDATA[%s]]></Content></xml>"""\
-        % (fromUser, toUser, str(int(time.time())), msgType, u""+parsed_content)
+        % (fromUser, toUser, str(int(time.time())), msgType, parsed_content)
     return reply
 
 
@@ -58,9 +59,10 @@ def parse_content(content):
     if len(content) != 2:
         return "格式错误, 发送'格式'获取帮助"
     else:
-        choices = content[0].split(',')
+        choices = content[0].replace("u", "").split(',')
         key_words = content[1].split(',')
         if len(choices) <= 1 or len(key_words) <= 1:
             return "格式错误, 发送'格式'获取帮助"
         else:
+            logging.debug(choices[0])
             return str(choices[0]).decode('utf-8')
