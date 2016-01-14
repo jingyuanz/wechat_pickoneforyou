@@ -61,7 +61,7 @@ def parse_content(content):
     else:
         choices = content[0].split(' ')
         key_words = content[1].split(' ')
-        if len(choices) <= 1 or len(key_words) <= 1:
+        if len(choices) <= 1 or len(key_words) < 1 or key_words == "":
             return "格式错误, 发送'格式'获取帮助"
         else:
             best_choice = choice(choices)
