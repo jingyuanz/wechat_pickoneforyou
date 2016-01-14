@@ -50,5 +50,5 @@ def parse_message(request_xml):
                 <CreateTime>{}</CreateTime>
                 <MsgType><![CDATA[{}]]></MsgType>
                 <Content><![CDATA[{}]]></Content></xml>"""\
-        .format(fromUser, toUser, str(int(time.time())), msgType, content)
+        .format(fromUser, toUser, str(int(time.time())), msgType, "sadasda")
     return reply
