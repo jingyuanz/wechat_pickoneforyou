@@ -64,5 +64,6 @@ def parse_content(content):
         if len(choices) <= 1 or len(key_words) <= 1:
             return "格式错误, 发送'格式'获取帮助"
         else:
-            logging.error(choice(choices))
-            return choice(choices)
+            best_choice = choice(choices)
+            logging.error(best_choice)
+            return best_choice
