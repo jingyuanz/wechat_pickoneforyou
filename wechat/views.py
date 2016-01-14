@@ -47,7 +47,7 @@ def parse_message(request_xml):
                 <CreateTime>%s</CreateTime>
                 <MsgType><![CDATA[%s]]></MsgType>
                 <Content><![CDATA[%s]]></Content></xml>"""\
-        % (fromUser, toUser, str(int(time.time())), msgType, ""+parsed_content)
+        % (fromUser, toUser, str(int(time.time())), msgType, u""+parsed_content)
     return reply
 
 
@@ -63,4 +63,4 @@ def parse_content(content):
         if len(choices) <= 1 or len(key_words) <= 1:
             return "格式错误, 发送'格式'获取帮助"
         else:
-            return str(choices[0])
+            return str(choices[0]).decode('utf-8')
