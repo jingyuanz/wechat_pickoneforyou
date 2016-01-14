@@ -86,5 +86,6 @@ def parse_content(content):
             results += "综上, 最佳选项是--"+best_choice+best_portion
 
             logging.error(results)
-            return results
+
+            return choice(choices)
 
