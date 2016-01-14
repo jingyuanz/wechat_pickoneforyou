@@ -1,4 +1,4 @@
-#coding=utf-8
+# -*- coding:utf8 -*-
 __author__ = 'zhangjingyuan'
 import hashlib
 import json
@@ -63,4 +63,4 @@ def parse_content(content):
         if len(choices) <= 1 or len(key_words) <= 1:
             return "格式错误, 发送'格式'获取帮助"
         else:
-            return choice(choices).decode("utf-8")
+            return choice(choices)
