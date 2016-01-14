@@ -8,15 +8,11 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.template import Context,Template,loader
 import time
+from random import choice
 TOKEN = 'jingyuanz'
 
 @csrf_exempt
 def wechat(request):
-    """
-    所有的消息都会先进入这个函数进行处理，函数包含两个功能，
-    微信接入验证是GET方法，
-    微信正常的收发消息是用POST方法。
-    """
     if request.method == "GET":
         signature = request.GET.get("signature", None)
         timestamp = request.GET.get("timestamp", None)
@@ -44,11 +40,27 @@ def parse_message(request_xml):
     msgType=request_xml.find("MsgType").text
     fromUser=request_xml.find("FromUserName").text
     toUser=request_xml.find("ToUserName").text
+    parsed_content = parse_content(content)
     reply = """<xml>
                 <ToUserName><![CDATA[{}]]></ToUserName>
                 <FromUserName><![CDATA[{}]]></FromUserName>
                 <CreateTime>{}</CreateTime>
                 <MsgType><![CDATA[{}]]></MsgType>
                 <Content><![CDATA[{}]]></Content></xml>"""\
-        .format(fromUser, toUser, str(int(time.time())), msgType, "[DEBUGGING]SUCCESSFULLY POSTED")
+        .format(fromUser, toUser, str(int(time.time())), msgType, parsed_content)
     return reply
+
+
+def parse_content(content):
+    if content == u"格式":
+        return U"A,B,C,D?X,Y,Z\nA,B,C,D代表选项, XYZ代表关键词/关键句或条件,用逗号隔开,并在两组间用问号隔开, 比如 香蕉,火锅,中药?好吃,不上火. 就能得到科学选择"
+    content = content.split('?')
+    if len(content) != 2:
+        return u"错误的格式, 发送\"格式\"获取帮助"
+    else:
+        choices = content[0].split(',')
+        key_words = content[1].split(',')
+        if len(choices) < 1 or len(key_words)<1:
+            return u"格式错误, 发送\"格式\"获取帮助"
+        else:
+            return choice(choices)
