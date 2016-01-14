@@ -42,12 +42,12 @@ def parse_message(request_xml):
     toUser=request_xml.find("ToUserName").text
     parsed_content = parse_content(content)
     reply = """<xml>
-                <ToUserName><![CDATA[{}]]></ToUserName>
-                <FromUserName><![CDATA[{}]]></FromUserName>
-                <CreateTime>{}</CreateTime>
-                <MsgType><![CDATA[{}]]></MsgType>
-                <Content><![CDATA[{}]]></Content></xml>"""\
-        .format(fromUser, toUser, str(int(time.time())), msgType, ""+parsed_content)
+                <ToUserName><![CDATA[%s]]></ToUserName>
+                <FromUserName><![CDATA[%s]]></FromUserName>
+                <CreateTime>%s</CreateTime>
+                <MsgType><![CDATA[%s]]></MsgType>
+                <Content><![CDATA[%s]]></Content></xml>"""\
+        % (fromUser, toUser, str(int(time.time())), msgType, ""+parsed_content)
     return reply
 
 
