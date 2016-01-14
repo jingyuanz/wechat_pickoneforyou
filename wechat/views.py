@@ -9,6 +9,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.template import Context,Template,loader
 import time
+import random
+from collections import defaultdict
 from random import choice
 TOKEN = 'jingyuanz'
 
@@ -64,6 +66,25 @@ def parse_content(content):
         if len(choices) <= 1 or len(key_words) < 1 or key_words == "":
             return "格式错误, 发送'格式'获取帮助,记住问号'?'一定要是英文的问号!!"
         else:
-            best_choice = choice(choices)
-            logging.error(best_choice)
-            return best_choice
+            sum = 0
+            content_dict = defaultdict(int)
+            for item in choices:
+                for key in key_words:
+                    value = random.randint(0,100)
+                    content_dict[item] += value
+                    sum += value
+
+            sorted_dict = sorted(content_dict.items(), lambda x, y: cmp(x[1], y[1]), reverse=True)
+
+            best_choice = sorted_dict[0][0]
+            best_portion = 1.0*sorted_dict[0][1]/sum*100+"%"
+
+            results = ""
+            for tuple in sorted_dict:
+                results += tuple[0] + ":" + 1.0*tuple[1]/sum*100 + "%\n"
+
+            results += "综上, 最佳选项是--"+best_choice+best_portion
+
+            logging.error(results)
+            return results
+
