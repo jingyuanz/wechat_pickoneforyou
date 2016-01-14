@@ -58,9 +58,9 @@ def parse_content(content):
     if len(content) != 2:
         return "格式错误, 发送'格式'获取帮助"
     else:
-        choices = content[0].replace('u\'','\'').split(',')
+        choices = content[0].split(',')
         key_words = content[1].split(',')
         if len(choices) <= 1 or len(key_words) <= 1:
             return "格式错误, 发送'格式'获取帮助"
         else:
-            return choice(choices).decode("unicode-escape")
+            return choice(choices).decode("utf-8")
