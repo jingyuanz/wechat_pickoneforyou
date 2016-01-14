@@ -65,4 +65,4 @@ def parse_content(content):
             return "格式错误, 发送'格式'获取帮助"
         else:
             logging.error(choices[0])
-            return str(choices[0]).decode('utf-8')
+            return "hi"
