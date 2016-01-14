@@ -30,7 +30,7 @@ def wechat(request):
         if tmp_str == signature:
             return HttpResponse(echostr)
         else:
-            return HttpResponse(echostr)
+            return HttpResponse("Hi")
     else:
         xml_str = smart_str(request.body)
         request_xml = etree.fromstring(xml_str)
