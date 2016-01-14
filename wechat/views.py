@@ -65,4 +65,4 @@ def parse_content(content):
         if len(choices) <= 1 or len(key_words) <= 1:
             return "格式错误, 发送'格式'获取帮助"
         else:
-            return choices[0]
+            return str_choices[0]
