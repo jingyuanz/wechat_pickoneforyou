@@ -28,10 +28,10 @@ def wechat(request):
         tmp_str = "%s%s%s" % tuple(tmp_list)
         tmp_str = hashlib.sha1(tmp_str).hexdigest()
         if tmp_str == signature:
-            return HttpResponse(echostr)
+            return HttpResponse(echostr, content_type="text/plain")
         else:
-            return HttpResponse("Hi")
-    else:
+            return None
+    elif request.method == "POST":
         xml_str = smart_str(request.body)
         request_xml = etree.fromstring(xml_str)
         response_xml = parse_message(request_xml)
@@ -39,15 +39,16 @@ def wechat(request):
 
 
 def parse_message(request_xml):
-    t = loader.get_template('reply_text.xml')
-    content=request_xml.find("Content").text#获得用户所输入的内容
+    # t = loader.get_template('reply_text.xml')
+    content=request_xml.find("Content").text
     msgType=request_xml.find("MsgType").text
     fromUser=request_xml.find("FromUserName").text
     toUser=request_xml.find("ToUserName").text
-    c = {
-        'toUser' : fromUser,
-        'fromUser' : toUser,
-        'createTime': str(int(time.time()))
-    }
-    result = t.render(Context(c))
-    return result
+    reply = """<xml>
+                <ToUserName><![CDATA[{}]]></ToUserName>
+                <FromUserName><![CDATA[{}]]></FromUserName>
+                <CreateTime>{}</CreateTime>
+                <MsgType><![CDATA[{}]]></MsgType>
+                <Content><![CDATA[{}]]></Content></xml>"""\
+        .format(fromUser, toUser, str(int(time.time())), msgType, content)
+    return reply
