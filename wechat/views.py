@@ -1,4 +1,4 @@
-#coding=utf-8
+# coding=utf-8
 __author__ = 'zhangjingyuan'
 import hashlib
 import json
@@ -122,7 +122,7 @@ def count_search_engine(content):
     try:
         print urllib.quote(content)
     except Exception as e:
-        print str(e),
+        print str(e).decode('unicode_escape'),
         print 11
 
     url_address = 'http://www.baidu.com/s?wd={}'.format(urllib.quote(content))
