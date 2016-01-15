@@ -119,7 +119,7 @@ def parse_content(content):
 
 
 def count_search_engine(content):
-    content = content.strip().replace()
+    content = content.strip().replace(("？ ","?"))
     # print isinstance(content, "utf-8")
     content = content.encode('utf-8')
     url_address = 'http://www.baidu.com/s?wd={}'.format(urllib.quote(content))
