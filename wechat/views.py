@@ -123,7 +123,7 @@ def count_search_engine(content):
     # print isinstance(content, "utf-8")
     print content
     try:
-        print urllib.quote(content)
+        print urllib.quote(content.encode('utf-8'))
     except Exception as e:
         print str(e),
         print 11
