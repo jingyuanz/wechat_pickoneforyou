@@ -89,6 +89,7 @@ def parse_content(content):
             return "格式错误, 发送'格式'获取帮助,记住问号'?'一定要是英文的问号!!"
         else:
             keys = QUOTE+(QUOTE+"AND").join(key_words)+QUOTE
+            logging.error(keys)
             sum = 0
             content_dict = defaultdict(int)
             for item in choices:
