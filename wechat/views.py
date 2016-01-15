@@ -33,6 +33,7 @@ def wechat(request):
         else:
             return HttpResponse(echostr, content_type="text/plain")
     elif request.method == "POST":
+        request.setCharacterEncoding("UTF-8")
         xml_str = smart_str(request.body)
         request_xml = etree.fromstring(xml_str)
         response_xml = parse_message(request_xml)
