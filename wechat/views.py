@@ -89,7 +89,7 @@ def parse_content(content):
             return "格式错误, 发送'格式'获取帮助,记住问号'?'一定要是英文的问号!!"
         else:
             keys = QUOTE+(QUOTE+"AND").join(key_words)+QUOTE
-            logging.error(keys)
+            # logging.error(keys)
             sum = 0
             content_dict = defaultdict(int)
             for item in choices:
@@ -99,7 +99,7 @@ def parse_content(content):
                 content_dict[item] += starting_value
                 sum += starting_value
                 for key in key_words:
-                    print key
+                    # print key
                     value = 1.0*count_search_engine(convert_into_search_query(item, key))/penalty
                     content_dict[item] += value
                     sum += value
@@ -117,6 +117,7 @@ def parse_content(content):
 
 
 def count_search_engine(content):
+    print 1
     url_address = 'http://www.baidu.com/s?wd={}'.format(content)
     f = urllib2.urlopen(url_address)
     buf = f.read()
