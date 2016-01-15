@@ -98,7 +98,7 @@ def parse_content(content):
             for item in choices:
                 item_all_keys = QUOTE+item+QUOTE+AND+keys
                 penalty = count_search_engine(QUOTE+item+QUOTE)
-                print penalty
+                print item+str(penalty)
                 starting_value = 1.0*(count_search_engine(item_all_keys)/penalty)
                 print starting_value
                 content_dict[item] += starting_value
