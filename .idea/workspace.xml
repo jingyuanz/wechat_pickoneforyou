@@ -61,8 +61,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wechat/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.28865978" vertical-offset="1660" max-vertical-offset="2145">
-              <caret line="120" column="36" selection-start-line="120" selection-start-column="36" selection-end-line="120" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.41237113" vertical-offset="1660" max-vertical-offset="2205">
+              <caret line="124" column="23" selection-start-line="124" selection-start-column="23" selection-end-line="124" selection-end-column="23" />
               <folding>
                 <element signature="e#43#57#0" expanded="true" />
               </folding>
@@ -73,8 +73,8 @@
       <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wechat/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="490" max-vertical-offset="1125">
-              <caret line="53" column="67" selection-start-line="53" selection-start-column="67" selection-end-line="53" selection-end-column="67" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="445" max-vertical-offset="1125">
+              <caret line="54" column="21" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="21" />
               <folding>
                 <element signature="e#43#56#0" expanded="true" />
               </folding>
@@ -628,8 +628,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wechat/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="490" max-vertical-offset="1125">
-          <caret line="53" column="67" selection-start-line="53" selection-start-column="67" selection-end-line="53" selection-end-column="67" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="445" max-vertical-offset="1125">
+          <caret line="54" column="21" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="21" />
           <folding>
             <element signature="e#43#56#0" expanded="true" />
           </folding>
@@ -638,8 +638,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wechat/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28865978" vertical-offset="1660" max-vertical-offset="2145">
-          <caret line="120" column="36" selection-start-line="120" selection-start-column="36" selection-end-line="120" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.41237113" vertical-offset="1660" max-vertical-offset="2205">
+          <caret line="124" column="23" selection-start-line="124" selection-start-column="23" selection-end-line="124" selection-end-column="23" />
           <folding>
             <element signature="e#43#57#0" expanded="true" />
           </folding>
