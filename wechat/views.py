@@ -119,7 +119,7 @@ def parse_content(content):
 
 def count_search_engine(content):
     print content
-    print urllib.quote('"白石麻衣"')
+    print urllib.quote(content.truncate())
     url_address = 'http://www.baidu.com/s?wd={}'.format(urllib.quote(content))
     print "a"
     print url_address
