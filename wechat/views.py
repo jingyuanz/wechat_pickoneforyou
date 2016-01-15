@@ -98,25 +98,23 @@ def parse_content(content):
             for item in choices:
                 item_all_keys = QUOTE+item+QUOTE+AND+keys
                 penalty = count_search_engine(QUOTE+item+QUOTE)
-                starting_value = 5.0*(count_search_engine(item_all_keys)/penalty)
+                print penalty
+                starting_value = 1.0*(count_search_engine(item_all_keys)/penalty)
+                print starting_value
                 content_dict[item] += starting_value
                 sum += starting_value
                 for key in key_words:
-                    # print key
                     value = 1.0*count_search_engine(convert_into_search_query(item, key))/penalty
                     content_dict[item] += value
                     sum += value
-                    logging.error(value)
             sorted_dict = sorted(content_dict.items(), lambda x, y: cmp(x[1], y[1]), reverse=True)
             best_choice = sorted_dict[0][0]
             best_portion = str(round(1.0*sorted_dict[0][1]/sum*100, 2))
             results = "通过计算搜索引擎(百度)对以上选项和各关键词的关联性,得出以下结论(不再是随机了!!很科学!!):\n\n"
             for tup in sorted_dict:
                 results += tup[0] + str(round(1.0*tup[1]/sum*100, 2)) + "%\n\n"
-            logging.error(results)
             results += "综上, 最佳选项是 -- "+best_choice + " "+best_portion+"%"
 
-            # logging.error(results)
             return results
 
 
