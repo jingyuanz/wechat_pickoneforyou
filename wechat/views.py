@@ -98,7 +98,7 @@ def parse_content(content):
             content_dict = defaultdict(int)
             for item in choices:
                 item_all_keys = QUOTE+item+QUOTE+AND+keys
-                penalty = count_search_engine(QUOTE+item+QUOTE)
+                penalty = math.log(count_search_engine(QUOTE+item+QUOTE))
                 print item+str(penalty)
                 starting_value = 1.0*(count_search_engine(item_all_keys)/penalty)
                 print starting_value
@@ -129,8 +129,8 @@ def count_search_engine(content):
     buf = buf.replace(',', "")
     num = re.findall(r'百度为您找到相关结果约(\d+)个',buf)
     if len(num) == 1:
-        return math.log(int(num[0]))+0.0001
-    return 0.0001
+        return int(num[0])+1
+    return 1
 
 
 def convert_into_search_query(raw1, raw2):
