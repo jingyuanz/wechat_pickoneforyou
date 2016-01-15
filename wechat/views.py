@@ -103,7 +103,7 @@ def parse_content(content):
                     value = 1.0*count_search_engine(convert_into_search_query(item, key))/penalty
                     content_dict[item] += value
                     sum += value
-
+                    logging.error(value)
             sorted_dict = sorted(content_dict.items(), lambda x, y: cmp(x[1], y[1]), reverse=True)
             # best_choice = sorted_dict[0][0]
             # best_portion = str(round(1.0*sorted_dict[0][1]/sum*100, 2))
