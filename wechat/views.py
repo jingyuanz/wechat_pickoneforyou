@@ -97,7 +97,7 @@ def parse_content(content):
 
             results = ""
             for tup in sorted_dict:
-                results += tup[0] + ":" + str(1.0*tup[1]/sum*100) + "%\n"
+                results += tup[0] + ":" + str(1.0*tup[1]/sum*100) + "\n"
 
-            results += "综上, 最佳选项是 -- "+best_choice + " "+best_portion+"%"
+            results += "综上, 最佳选项是 -- "+best_choice + " "+best_portion
             return results
