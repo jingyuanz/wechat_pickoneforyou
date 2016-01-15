@@ -33,7 +33,7 @@ def wechat(request):
         else:
             return HttpResponse(echostr, content_type="text/plain")
     elif request.method == "POST":
-        request.setCharacterEncoding("UTF-8")
+        # request.setCharacterEncoding("UTF-8")
         xml_str = smart_str(request.body)
         request_xml = etree.fromstring(xml_str)
         response_xml = parse_message(request_xml)
@@ -74,9 +74,9 @@ def parse_message(request_xml):
 #             return best_choice
 
 AND = "AND"
-PLUS = '%2B'
-SPACE = '%20'
-QUOTE = '%22'
+PLUS = '+'
+SPACE = ' '
+QUOTE = '"'
 def parse_content(content):
     if content == u"格式":
         return "A B C D?X Y Z\nA,B,C,D代表选项, XYZ代表关键词/关键句或条件,用空格隔开,并在两组间用问号隔开,\n比如 香蕉 火锅 中药?好吃 不上火\n就能得到科学选择\n(记住问号是半角英文的问号,目前只是随机)"
@@ -89,7 +89,7 @@ def parse_content(content):
         if len(choices) <= 1 or len(key_words) < 1 or key_words == "":
             return "格式错误, 发送'格式'获取帮助,记住问号'?'一定要是英文的问号!!"
         else:
-            keys = QUOTE+(QUOTE+"AND").join(key_words)+QUOTE
+            keys = QUOTE+(QUOTE+AND).join(key_words)+QUOTE
             # logging.error(keys)
             sum = 0
             content_dict = defaultdict(int)
