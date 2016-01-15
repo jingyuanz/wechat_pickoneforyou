@@ -1,6 +1,7 @@
 # coding=utf-8
 __author__ = 'zhangjingyuan'
 import hashlib
+import sys
 import json
 import logging
 from lxml import etree
@@ -15,8 +16,9 @@ from random import choice
 import urllib2
 import re
 import urllib
+reload(sys)
 TOKEN = 'jingyuanz'
-
+sys.setdefaultencoding('utf8')
 @csrf_exempt
 def wechat(request):
     if request.method == "GET":
