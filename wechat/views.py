@@ -121,8 +121,8 @@ def count_search_engine(content):
     # print isinstance(content, "utf-8")
     try:
         print urllib.quote(content)
-    except Exception, e:
-        print e.message
+    except Exception as e:
+        print str(e),
         print 11
 
     url_address = 'http://www.baidu.com/s?wd={}'.format(urllib.quote(content))
