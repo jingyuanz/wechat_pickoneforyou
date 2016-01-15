@@ -19,7 +19,6 @@ TOKEN = 'jingyuanz'
 
 @csrf_exempt
 def wechat(request):
-    request.encoding = "utf-8"
     if request.method == "GET":
         signature = request.GET.get("signature", None)
         timestamp = request.GET.get("timestamp", None)
@@ -120,7 +119,8 @@ def parse_content(content):
 
 def count_search_engine(content):
     print "hi"
-    print urllib.quote("asdas%")
+    content.encoding = "utf-8"
+    print urllib.quote(content)
     url_address = u'http://www.baidu.com/s?wd={}'.format(urllib.quote(content))
     print "a"
     print url_address
