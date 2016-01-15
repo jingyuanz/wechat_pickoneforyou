@@ -121,10 +121,9 @@ def parse_content(content):
 
 def count_search_engine(content):
     # print isinstance(content, "utf-8")
-    content = content.decode('unicode_escape')
     print content
     try:
-        print urllib.quote(content.decode('unicode_escape').encode('utf-8'))
+        print urllib.quote(content)
     except Exception as e:
         print str(e).decode('unicode_escape'),
         print 11
