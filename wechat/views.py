@@ -89,12 +89,11 @@ def parse_content(content):
                     value = random.randint(0,100)
                     content_dict[item] += value
                     sum += value
-            logging.error("here")
             sorted_dict = sorted(content_dict.items(), lambda x, y: cmp(x[1], y[1]), reverse=True)
-            logging.error(sum)
             best_choice = sorted_dict[0][0]
             best_portion = str(1.0*sorted_dict[0][1]/sum*100)
-
+            logging.error(best_choice)
+            logging.error(best_portion)
             results = ""
             for tup in sorted_dict:
                 results += tup[0] + ":" + str(1.0*tup[1]/sum*100) + "\n"
