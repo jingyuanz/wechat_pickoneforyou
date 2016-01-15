@@ -121,6 +121,7 @@ def parse_content(content):
 def count_search_engine(content):
     print "hi"
     url_address = u'http://www.baidu.com/s?wd={}'.format(urllib.quote(content))
+    print "a"
     print url_address
     f = urllib2.urlopen(url_address)
     print 2
