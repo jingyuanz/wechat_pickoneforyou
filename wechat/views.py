@@ -94,7 +94,6 @@ def parse_content(content):
             content_dict = defaultdict(int)
             for item in choices:
                 item_all_keys = QUOTE+item+QUOTE+AND+keys
-                print item_all_keys
                 penalty = count_search_engine(QUOTE+item+QUOTE)
                 starting_value = 5.0*(count_search_engine(item_all_keys)/penalty)
                 content_dict[item] += starting_value
@@ -111,7 +110,7 @@ def parse_content(content):
             results = ""
             for tup in sorted_dict:
                 results += tup[0] + str(round(1.0*tup[1]/sum*100, 2)) + "%\n\n"
-
+            logging.error(results)
             # results += u"综上, 最佳选项是 -- "+best_choice + u" "+best_portion+u"%"
             # logging.error(results)
             return results
