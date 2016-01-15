@@ -94,10 +94,8 @@ def parse_content(content):
             best_portion = str(1.0*sorted_dict[0][1]/sum*100)
             results = ""
             for tup in sorted_dict:
-                results += tup[0] + ":" + str(1.0*tup[1]/sum*100) + "\n"
+                results += tup[0] + ":" + str(1.0*tup[1]/sum*100) + "%\n\n"
 
-            logging.error(results)
-
-            results += u"综上, 最佳选项是 -- "+best_choice + " "+best_portion
+            results += u"综上, 最佳选项是 -- "+best_choice + " "+best_portion+"%"
             logging.error(results)
             return results
