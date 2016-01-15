@@ -119,7 +119,7 @@ def parse_content(content):
 
 def count_search_engine(content):
     print content
-    logging.error(urllib.quote(content))
+    print urllib.quote(content.decode('utf-8'))
     url_address = 'http://www.baidu.com/s?wd={}'.format(urllib.quote(content))
     print "a"
     print url_address
