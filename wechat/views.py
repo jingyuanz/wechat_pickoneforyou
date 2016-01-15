@@ -99,9 +99,7 @@ def parse_content(content):
             for item in choices:
                 item_all_keys = QUOTE+item+QUOTE+AND+keys
                 penalty = math.log(count_search_engine(QUOTE+item+QUOTE))
-                print item+str(penalty)
                 starting_value = 1.0*(count_search_engine(item_all_keys)/penalty)
-                print starting_value
                 content_dict[item] += starting_value
                 sum += starting_value
                 for key in key_words:
@@ -122,7 +120,6 @@ def parse_content(content):
 def count_search_engine(content):
     # print isinstance(content, "utf-8")
     content = content.encode('utf-8')
-    print content
     url_address = 'http://www.baidu.com/s?wd={}'.format(urllib.quote(content))
     f = urllib2.urlopen(url_address)
     buf = f.read()
