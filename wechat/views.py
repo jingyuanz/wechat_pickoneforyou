@@ -115,7 +115,7 @@ def parse_content(content):
             for tup in sorted_dict:
                 results += tup[0] + str(round(1.0*tup[1]/sum*100, 2)) + "%\n\n"
             results += "综上, 最佳选项是 -- "+best_choice + " "+best_portion+"%"
-
+            print best_choice
             return results
 
 
