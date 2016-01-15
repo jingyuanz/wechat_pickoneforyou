@@ -117,12 +117,12 @@ def parse_content(content):
 
 
 def count_search_engine(content):
-    print 1
     url_address = 'http://www.baidu.com/s?wd={}'.format(content)
     f = urllib2.urlopen(url_address)
     buf = f.read()
     buf = buf.replace(',', "")
     num = re.findall(r'百度为您找到相关结果约(\d+)个',buf)
+    print 1
     if len(num) == 1:
         return int(num[0])+1
     return 1
