@@ -92,11 +92,11 @@ def parse_content(content):
             sorted_dict = sorted(content_dict.items(), lambda x, y: cmp(x[1], y[1]), reverse=True)
             best_choice = sorted_dict[0][0]
             best_portion = str(1.0*sorted_dict[0][1]/sum*100)
-            logging.error(best_choice)
-            logging.error(best_portion)
             results = ""
             for tup in sorted_dict:
                 results += tup[0] + ":" + str(1.0*tup[1]/sum*100) + "\n"
+
+            logging.error(results)
 
             results += "综上, 最佳选项是 -- "+best_choice + " "+best_portion
             logging.error(results)
