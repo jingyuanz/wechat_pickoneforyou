@@ -3,6 +3,7 @@ __author__ = 'zhangjingyuan'
 import hashlib
 import sys
 import json
+import math
 import logging
 from lxml import etree
 from django.utils.encoding import smart_str
@@ -128,8 +129,8 @@ def count_search_engine(content):
     buf = buf.replace(',', "")
     num = re.findall(r'百度为您找到相关结果约(\d+)个',buf)
     if len(num) == 1:
-        return int(num[0])+1
-    return 1
+        return math.log(int(num[0]))+0.0001
+    return 0.0001
 
 
 def convert_into_search_query(raw1, raw2):
