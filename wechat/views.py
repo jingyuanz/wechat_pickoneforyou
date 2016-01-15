@@ -123,14 +123,10 @@ def count_search_engine(content):
     # print isinstance(content, "utf-8")
     content = content.encode('utf-8')
     url_address = 'http://www.baidu.com/s?wd={}'.format(urllib.quote(content))
-    print "a"
-    print url_address
     f = urllib2.urlopen(url_address)
-    print 2
     buf = f.read()
     buf = buf.replace(',', "")
     num = re.findall(r'百度为您找到相关结果约(\d+)个',buf)
-    print 3
     if len(num) == 1:
         return int(num[0])+1
     return 1
