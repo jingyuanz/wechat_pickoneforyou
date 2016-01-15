@@ -123,6 +123,7 @@ def count_search_engine(content):
         print urllib.quote(content)
     except Exception, e:
         print e.message
+        print 11
 
     url_address = 'http://www.baidu.com/s?wd={}'.format(urllib.quote(content))
     print "a"
