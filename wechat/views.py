@@ -113,15 +113,13 @@ def parse_content(content):
             best_portion = str(round(1.0*sorted_dict[0][1]/sum*100, 2))
             results = "通过计算搜索引擎(百度)对以上选项和各关键词的关联性,得出以下结论(不再是随机了!!很科学!!):\n\n"
             for tup in sorted_dict:
-                results += tup[0] + str(round(1.0*tup[1]/sum*100, 2)) + "%\n\n"
-            results += "综上, 最佳选项是 -- "+best_choice + " "+best_portion+"%"
+                results += tup[0] + " " + str(round(1.0*tup[1]/sum*100, 2)) + "%\n\n"
+            results += "综上, 最佳选项是 -- "+best_choice
             print best_choice
             return results
 
 
 def count_search_engine(content):
-
-    # print isinstance(content, "utf-8")
     content = content.encode('utf-8')
     url_address = 'http://www.baidu.com/s?wd={}'.format(urllib.quote(content))
     f = urllib2.urlopen(url_address)
