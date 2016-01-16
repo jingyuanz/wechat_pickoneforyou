@@ -88,10 +88,12 @@ def parse_content(content):
         return "格式错误, 发送'格式'获取帮助, 记住问号'?'一定要是英文的问号!!英文的问号!!英文的问号!!前后不要有空格!! 如有任何BUG或疑问请联系微信号minamotokyon"
     else:
         choices = content[0].split(' ')
+        print choices
         key_words = content[1].split(' ')
         choices = [i for i in choices if i != '' and i != ' ']
+        print choices
         key_words = [i for i in key_words if i != '' and i != ' ']
-        if len(choices) <= 1 or len(key_words) < 1 or key_words == "":
+        if len(choices) <= 1 or len(key_words) < 1:
             return "格式错误, 发送'格式'获取帮助,记住问号'?'一定要是英文的问号!!英文的问号!!英文的问号!!前后不要有空格!! 如有任何BUG或疑问请联系微信号minamotokyon"
         else:
             keys = QUOTE+(QUOTE+AND).join(key_words)+QUOTE
