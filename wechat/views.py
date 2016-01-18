@@ -112,7 +112,7 @@ def parse_content(content):
                     sum += value
             sorted_dict = sorted(content_dict.items(), lambda x, y: cmp(x[1], y[1]), reverse=True)
             best_choice = sorted_dict[0][0]
-            results = "通过计算搜索引擎(百度)对以上选项和各关键词的关联性,得出以下结论(不再是随机了!!很科学!!):\n\n"
+            results = "搜索引擎(百度)对以上选项和各关键词的关联性:\n\n"
             for tup in sorted_dict:
                 results += tup[0] + " " + str(round(1.0*tup[1]/sum*100, 2)) + "%\n\n"
             results += "综上, 最佳选项是 -- "+best_choice
@@ -128,8 +128,8 @@ def count_search_engine(content):
     buf = buf.replace(',', "")
     num = re.findall(r'百度为您找到相关结果约(\d+)个',buf)
     if len(num) == 1:
-        return int(num[0])+2
-    return 2
+        return math.log(int(num[0])+2, 1.5)
+    return math.log(2, 1.5)
 
 
 def convert_into_search_query(raw1, raw2):
