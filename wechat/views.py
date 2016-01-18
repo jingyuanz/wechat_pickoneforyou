@@ -75,6 +75,7 @@ def parse_message(request_xml):
 #             return best_choice
 
 AND = "AND"
+NOT = "NOT"
 PLUS = '+'
 SPACE = ' '
 MINUS = '-'
@@ -141,4 +142,4 @@ def add_key_word_at_front(key, keys):
 
 
 def convert_into_search_query(raw1, raw2):
-    return QUOTE+raw1+QUOTE+AND+QUOTE+raw2+QUOTE+SPACE+MINUS+"不"+raw2
+    return QUOTE+raw1+QUOTE+AND+QUOTE+raw2+QUOTE+SPACE+NOT+"不"+raw2
