@@ -92,18 +92,18 @@ def parse_content(content):
         choices = [i for i in choices if i != '' and i != ' ']
         key_words = [i for i in key_words if i != '' and i != ' ']
         if len(key_words) == 0:
-            key_words.append("好")
+            key_words.append("很好")
         if len(choices) <= 1 or len(key_words) < 1:
             return "格式错误, 发送'格式'获取帮助,记住问号'?'一定要是英文的问号!!英文的问号!!英文的问号!!如有任何BUG或疑问请联系微信号minamotokyon"
         else:
-            keys = QUOTE+(QUOTE+AND).join(key_words)+QUOTE
+            keys = add_quotes((QUOTE+AND+QUOTE).join(key_words))
             # logging.error(keys)
             sum = 0
             content_dict = defaultdict(int)
             for item in choices:
-                item_all_keys = QUOTE+item+QUOTE+AND+keys
-                penalty = math.log(count_search_engine(QUOTE+item+QUOTE), 1.5)
-                starting_value = 1.0*count_search_engine(item_all_keys)/penalty
+                item_all_keys = add_key_word_at_front(item, keys)
+                penalty = math.log(count_search_engine(QUOTE+item+QUOTE))
+                starting_value = 2.0*count_search_engine(item_all_keys)/penalty
                 content_dict[item] += starting_value
                 sum += starting_value
                 for key in key_words:
@@ -132,5 +132,13 @@ def count_search_engine(content):
     return 2
 
 
+def add_quotes(content):
+    return QUOTE+content+QUOTE
+
+
+def add_key_word_at_front(key, keys):
+    return QUOTE+key+QUOTE+AND+keys
+
+
 def convert_into_search_query(raw1, raw2):
-    return QUOTE+raw1+QUOTE+"AND"+QUOTE+raw2+QUOTE
+    return QUOTE+raw1+QUOTE+AND+QUOTE+raw2+QUOTE
