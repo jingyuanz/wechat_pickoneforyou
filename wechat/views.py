@@ -77,6 +77,7 @@ def parse_message(request_xml):
 AND = "AND"
 PLUS = '+'
 SPACE = ' '
+MINUS = '-'
 QUOTE = '"'
 def parse_content(content):
     if content == u"格式":
@@ -120,6 +121,7 @@ def parse_content(content):
 
 def count_search_engine(content):
     content = content.encode('utf-8')
+
     url_address = 'http://www.baidu.com/s?wd={}'.format(urllib.quote(content))
     f = urllib2.urlopen(url_address)
     buf = f.read()
@@ -139,4 +141,4 @@ def add_key_word_at_front(key, keys):
 
 
 def convert_into_search_query(raw1, raw2):
-    return QUOTE+raw1+QUOTE+AND+QUOTE+raw2+QUOTE
+    return QUOTE+raw1+QUOTE+AND+QUOTE+raw2+QUOTE+SPACE+MINUS+"不"+raw2
