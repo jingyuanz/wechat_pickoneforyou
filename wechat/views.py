@@ -11,9 +11,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.template import Context,Template,loader
 import time
-import random
 from collections import defaultdict
-from random import choice
 import urllib2
 import re
 import urllib
@@ -103,7 +101,7 @@ def parse_content(content):
             for item in choices:
                 item_all_keys = add_key_word_at_front(item, keys)
                 penalty = math.log(count_search_engine(QUOTE+item+QUOTE))
-                starting_value = 2.0*count_search_engine(item_all_keys)/penalty
+                starting_value = len(key_words)**2*count_search_engine(item_all_keys)/penalty
                 content_dict[item] += starting_value
                 sum += starting_value
                 for key in key_words:
