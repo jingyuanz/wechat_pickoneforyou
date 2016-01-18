@@ -128,8 +128,8 @@ def count_search_engine(content):
     buf = buf.replace(',', "")
     num = re.findall(r'百度为您找到相关结果约(\d+)个',buf)
     if len(num) == 1:
-        return math.log(int(num[0])+2, 1.5)
-    return math.log(2, 1.5)
+        return math.log(int(num[0])+2, 1.1)
+    return math.log(2, 1.1)
 
 
 def convert_into_search_query(raw1, raw2):
