@@ -77,6 +77,8 @@ def parse_message(request_xml):
 AND = "AND"
 NOT = "NOT"
 PLUS = '+'
+BRACKET = '('
+BRACKET2 = ')'
 SPACE = ' '
 MINUS = '-'
 QUOTE = '"'
@@ -96,12 +98,12 @@ def parse_content(content):
         if len(choices) <= 1 or len(key_words) < 1:
             return "格式错误, 发送'格式'获取帮助,记住问号'?'一定要是英文的问号!!英文的问号!!英文的问号!!如有任何BUG或疑问请联系微信号minamotokyon"
         else:
-            keys = add_quotes((QUOTE+AND+QUOTE).join(key_words))
+            keys = group_all_keys(key_words)
             # logging.error(keys)
             sum = 0
             content_dict = defaultdict(int)
             for item in choices:
-                item_all_keys = add_key_word_at_front(item, keys)
+                item_all_keys = add_quotes(item+SPACE+keys)
                 penalty = math.log(count_search_engine(QUOTE+item+QUOTE))
                 starting_value = len(key_words)**2*count_search_engine(item_all_keys)/penalty
                 content_dict[item] += starting_value
@@ -137,9 +139,9 @@ def add_quotes(content):
     return QUOTE+content+QUOTE
 
 
-def add_key_word_at_front(key, keys):
-    return QUOTE+key+QUOTE+AND+keys
-
-
 def convert_into_search_query(raw1, raw2):
-    return QUOTE+raw1+QUOTE+AND+QUOTE+raw2+QUOTE+SPACE+NOT+"不"+raw2
+    return QUOTE+raw1+SPACE+raw2+QUOTE+SPACE+MINUS+BRACKET+"不"+raw2+BRACKET2
+
+
+def group_all_keys(keys):
+    return SPACE.join(keys)
